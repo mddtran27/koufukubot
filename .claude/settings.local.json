@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pandoc \"D:\\\\My Mascot\\\\Lore V2.docx\" -t markdown)",
+      "Bash(pandoc --version)",
+      "Bash(python -c \":*)",
+      "Bash(npx tsc --noEmit)"
+    ]
+  }
+}

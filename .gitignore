@@ -1,0 +1,44 @@
+# =========================================
+# KOUFUKU - CLAUDE CODE IGNORE FILE (Updated)
+# =========================================
+
+# 1. Thư viện & Build
+node_modules/
+dist/
+build/
+
+# 2. Database & Cache (Chặn file database nhưng giữ lại thư mục)
+data/*.sqlite
+data/*.sqlite-wal
+data/*.sqlite-shm
+data/*.sqlite-journal
+
+# 3. Multimedia (Tối ưu cho Bot Discord/Music)
+data/music/*
+!data/music/.gitkeep
+*.ogg
+*.mp3
+*.wav
+
+# 4. Binaries & OS files
+bin/ffmpeg/
+*.exe
+*.dll
+.DS_Store
+Thumbs.db
+
+# 5. Security (CỰC KỲ QUAN TRỌNG)
+.env
+.env.local
+.env.*
+config.json
+# Nếu có file chứa key của Google/Firebase/AWS thì thêm vào đây
+*.pem
+*.key
+
+# 6. Logs & Debug
+*.log
+npm-debug.log*
+yarn-debug.log*
+.vscode/
+.idea/
