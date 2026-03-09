@@ -1,7 +1,7 @@
 import { Client, TextChannel } from 'discord.js';
 import { ChatLogRepository } from '../repositories/ChatLogRepository';
 import { MemoryRepository } from '../repositories/MemoryRepository';
-import { LocalLLMService } from '../services/llm/LocalLLMService';
+import { LLMService } from '../services/llm/LLMService';
 import { PromptBuilder } from '../services/persona/PromptBuilder';
 import { OutputSanitizer } from '../services/persona/OutputSanitizer';
 import { config } from '../config/env';
@@ -9,7 +9,7 @@ import { config } from '../config/env';
 export class ProactiveChatJob {
     private client: Client;
     private chatRepo: ChatLogRepository;
-    private llm: LocalLLMService;
+    private llm: LLMService;
     private promptBuilder: PromptBuilder;
     private sanitizer: OutputSanitizer;
 
@@ -20,7 +20,7 @@ export class ProactiveChatJob {
         this.client = client;
         this.chatRepo = new ChatLogRepository();
         const memoryRepo = new MemoryRepository();
-        this.llm = new LocalLLMService();
+        this.llm = new LLMService();
         this.promptBuilder = new PromptBuilder(memoryRepo);
         this.sanitizer = new OutputSanitizer();
     }

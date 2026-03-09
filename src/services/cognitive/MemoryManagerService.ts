@@ -1,5 +1,5 @@
 import { ChatLogRepository } from '../../repositories/ChatLogRepository';
-import { LocalLLMService } from '../llm/LocalLLMService';
+import { LLMService } from '../llm/LLMService';
 
 export class MemoryManagerService {
     private static readonly WINDOW_SIZE = 6; // N = 6 recent messages are kept in sliding window
@@ -22,7 +22,7 @@ export class MemoryManagerService {
      * Background Task / Worker to summarize old messages
      * Fire-and-forget: should not block the main response pipeline
      */
-    public static async summarizeOldMessages(chatRepo: ChatLogRepository, llm: LocalLLMService, sessionId: string): Promise<void> {
+    public static async summarizeOldMessages(chatRepo: ChatLogRepository, llm: LLMService, sessionId: string): Promise<void> {
         try {
             // 1. Find the sliding window boundary (Protect the N newest messages)
             const boundaryId = chatRepo.getBoundaryLogId(sessionId, this.WINDOW_SIZE - 1);

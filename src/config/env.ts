@@ -3,10 +3,18 @@ dotenv.config();
 
 export const config = {
     DISCORD_TOKEN: process.env.DISCORD_TOKEN,
-    GROQ_API_KEY: process.env.GROQ_API_KEY, // Optional now
-    LOCAL_LLM_URL: process.env.LOCAL_LLM_URL || 'http://localhost:11434/v1',
-    LOCAL_MODEL_NAME: process.env.LOCAL_MODEL_NAME || 'llama3.1',
-    SERPER_API_KEY: process.env.SERPER_API_KEY, // Optional, for future use
+
+    // Universal LLM Configuration
+    LLM_API_KEY: process.env.LLM_API_KEY || process.env.GROQ_API_KEY,
+    LLM_BASE_URL: process.env.LLM_BASE_URL || process.env.LOCAL_LLM_URL || 'http://localhost:11434/v1',
+    LLM_MODEL: process.env.LLM_MODEL || process.env.LOCAL_MODEL_NAME || 'llama3.1',
+
+    // Legacy / Specific (Optional)
+    GROQ_API_KEY: process.env.GROQ_API_KEY,
+    LOCAL_LLM_URL: process.env.LOCAL_LLM_URL,
+    LOCAL_MODEL_NAME: process.env.LOCAL_MODEL_NAME,
+
+    SERPER_API_KEY: process.env.SERPER_API_KEY,
     CREATOR_ID: process.env.CREATOR_ID,
     ALLOWED_CHANNELS: process.env.ALLOWED_CHANNELS ? process.env.ALLOWED_CHANNELS.split(',') : [],
 };

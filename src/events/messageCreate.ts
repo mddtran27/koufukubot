@@ -1,7 +1,7 @@
 import { Events, Message, Client } from 'discord.js';
 import { ChatLogRepository } from '../repositories/ChatLogRepository';
 import { MemoryRepository } from '../repositories/MemoryRepository';
-import { LocalLLMService } from '../services/llm/LocalLLMService';
+import { LLMService } from '../services/llm/LLMService';
 import { PromptBuilder } from '../services/persona/PromptBuilder';
 import { OutputSanitizer } from '../services/persona/OutputSanitizer';
 import { VectorMemoryService } from '../services/cognitive/VectorMemoryService';
@@ -12,7 +12,7 @@ import { config } from '../config/env';
 // Initialize Singletons
 const chatRepo = new ChatLogRepository();
 const memoryRepo = new MemoryRepository();
-const llm = new LocalLLMService();
+const llm = new LLMService();
 const promptBuilder = new PromptBuilder(memoryRepo);
 const sanitizer = new OutputSanitizer();
 const vectorMemory = new VectorMemoryService();

@@ -1,7 +1,7 @@
 import { ChatLogRepository } from '../../repositories/ChatLogRepository';
 import { MemoryRepository } from '../../repositories/MemoryRepository';
 import { ChatLogEntry } from '../../types/index';
-import { LocalLLMService } from '../llm/LocalLLMService';
+import { LLMService } from '../llm/LLMService';
 
 export interface ImmediateCommandResult {
     saved: boolean;
@@ -152,7 +152,7 @@ export class EvolutionService {
      * Đọc 20 tin nhắn gần nhất và trích xuất sự thật (Auto-Memory).
      * Trả về chuỗi rỗng nếu không có gì đáng nhớ.
      */
-    public async extractImportantFacts(logs: ChatLogEntry[], llmService: LocalLLMService): Promise<string> {
+    public async extractImportantFacts(logs: ChatLogEntry[], llmService: LLMService): Promise<string> {
         // Gom lịch sử lại thành văn bản
         const chatHistory = logs.map(l => `${l.role === 'user' ? 'Cha' : 'Koufuku'}: ${l.content}`).join('\n');
 
